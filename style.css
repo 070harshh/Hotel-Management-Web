@@ -1,0 +1,653 @@
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+}
+
+.recognition {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.recognition h2 {
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.recognition p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.awards-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.award {
+    flex: 1;
+    max-width: 20%;
+    min-width: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.award h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.award p {
+    margin: 5px 0;
+}
+
+.divider {
+    width: 1px;
+    background-color: #ccc;
+    height: 100px;
+}
+
+.view-all-awards {
+    display: inline-block;
+    margin-top: 20px;
+    color: #f60;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-all-awards:hover {
+    text-decoration: underline;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+.snip1533 {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    color: #9e9e9e;
+    display: inline-block;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    margin: 35px 10px 10px;
+    max-width: 310px;
+    min-width: 250px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-top: 5px solid #d2652d;
+}
+
+.snip1533 *,
+.snip1533 *:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+
+.snip1533 figcaption {
+    padding: 13% 10% 12%;
+}
+
+.snip1533 figcaption:before {
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    color: #d2652d;
+    content: "\f10e";
+    font-family: 'FontAwesome';
+    font-size: 32px;
+    font-style: normal;
+    left: 50%;
+    line-height: 60px;
+    position: absolute;
+    top: -30px;
+    width: 60px;
+}
+
+.snip1533 h3 {
+    color: #3c3c3c;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    margin: 10px 0 5px;
+}
+
+.snip1533 h4 {
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.5;
+}
+
+.snip1533 blockquote {
+    font-style: italic;
+    font-weight: 300;
+    margin: 0 0 20px;
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,700);
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body {
+    background: #fbfbfb;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    color: #777;
+}
+
+h1,
+h4 {
+    font-family: 'Merriweather', serif;
+}
+
+.row {
+    padding: 0px 0;
+}
+
+.seperator {
+    margin-bottom: 30px;
+    width: 35px;
+    height: 3px;
+    background: #777;
+    border: none;
+}
+
+.title {
+    text-align: center;
+
+    .row {
+        padding: 50px 0 0;
+    }
+
+    h1 {
+        text-transform: uppercase;
+    }
+
+    .seperator {
+        margin: 0 auto 10px;
+    }
+}
+
+.item {
+    position: relative;
+    margin-bottom: 30px;
+    min-height: 1px;
+    float: left;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .item-in {
+        background: #fff;
+        padding: 40px;
+        position: relative;
+
+        &:hover:before {
+            width: 100%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            height: 2px;
+            width: 0%;
+            background: #e2b7e1;
+            right: 0px;
+            -webkit-transition: width 0.4s;
+            transition: width 0.4s;
+        }
+    }
+}
+
+.item {
+
+    h4 {
+        font-size: 18px;
+        margin-top: 25px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    a {
+        font-family: 'Merriweather', serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #666666;
+        margin-top: 10px;
+
+        i {
+            opacity: 0;
+            padding-left: 0px;
+            transition: 0.4s;
+            font-size: 24px;
+            display: inline-block;
+            top: 5px;
+            position: relative;
+        }
+
+        &:hover {
+            text-decoration: none;
+
+            i {
+                padding-left: 10px;
+                opacity: 1;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+.item .icon {
+    position: absolute;
+    top: 27px;
+    left: -16px;
+    cursor: pointer;
+
+    a {
+        font-family: 'Merriweather', serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #999;
+        text-transform: none;
+    }
+
+    svg {
+        width: 32px;
+        height: 32px;
+        float: left;
+    }
+
+    .icon-topic {
+        opacity: 0;
+        padding-left: 0px;
+        transition: 0.4s;
+        display: inline-block;
+        top: 0px;
+        position: relative;
+    }
+
+    &:hover .icon-topic {
+        opacity: 1;
+        padding-left: 10px;
+    }
+}
+
+@medi
+/* Demo purposes only */
+
+body {
+    background-color: #212121;
+    text-align: center;
+}
+
+
+footer {
+    text-align: center;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+
+footer .container div {
+    flex: 1 1 20%;
+    margin: 1rem;
+    min-width: 200px;
+    /* Adjust this as needed */
+}
+
+footer .container div h2 {
+    margin-bottom: 1rem;
+}
+
+footer .container nav {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .container nav a {
+    margin: 0.5rem 0;
+}
+
+footer .container nav a:hover {
+    color: #fff;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+footer .social-icons a {
+    margin: 0 0.5rem;
+}
+
+
+/* from index */
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.nav-container {
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+}
+
+.nav-container.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.nav-logo {
+    max-height: 80px;
+}
+
+.nav-logo img {
+    max-height: 70px;
+}
+
+.nav-controls a {
+    color: rgb(243, 189, 216);
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-controls a:hover {
+    color: #C57ED3;
+}
+
+/* hero */
+/* .hero-container {
+    width: 1519px;
+    height: 580px;
+    /* background: linear-gradient(-90deg, rgba(0, 0, 0, .01) .51%, rgba(0, 0, 0, .3) 62.06%, rgba(0, 0, 0, .5) 99.78%); */
+    /* padding-top: 150px; */
+
+ */
+
+.hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero-section img {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, .1) .51%, rgba(0, 0, 0, .3) 62.06%, rgba(0, 0, 0, .5) 99.78%);
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    /* padding: 20px; */
+    border-radius: 10px;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     */
+     font-family: 'Merriweather', serif;
+
+    font-weight: 500;
+    /* background: linear-gradient(-90deg, rgba(0, 0, 0, .1) .51%, rgba(0, 0, 0, .3) 62.06%, rgba(0, 0, 0, .5) 99.78%); */
+
+}
+
+.hero-text h1 {
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #f3bdd8;
+    width: 0;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    opacity: 0;
+}
+
+.hero-text button {
+    opacity: 0;
+}
+
+/* booking menu */
+.booking-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 1350px;
+    margin: -50px auto 20px auto;
+    position: relative;
+    z-index: 1;
+    padding-right: 0.25rem;
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.15);
+
+    /* >.form-control{
+        flex: 1 1 auto;
+    border: 0;
+    background: transparent; 
+    padding-right:  2.5rem;
+    } */
+}
+
+.booking-menu select,
+.booking-menu input,
+.booking-menu button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 20px;
+    max-width: 500px;
+}
+
+.booking-menu select,
+.booking-menu input,
+.booking-menu button {
+    margin-right: 20px;
+    max-width: 300px;
+    padding: 5px;
+    width: 100%;
+}
+
+
+.booking-menu button {
+    background-color: #ff6700;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.booking-menu button:hover {
+    background-color: #e65c00;
+}
+
+.guarantee {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.guarantee img {
+    margin-right: 5px;
+}
+
+.container {
+    padding: 70px 20px 20px 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.carousel img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero-section img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+.container {
+    padding: 70px 20px 20px 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.carousel img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.text-black-400 .image {
+    flex: 1;
+    width: 100%;
+    max-width: 720px;
+}
+
+.text-black-400 .text {
+    flex: 1;
+    width: 100%;
+    padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+    .nav-controls a {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    .hero-text {
+        /* padding: 15px; */
+        width: 90%;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-text p {
+        font-size: 1em;
+    }
+
+    .hero-text button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .container h1 {
+        font-size: 2em;
+    }
+
+    .container p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-controls a {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    .hero-text {
+        /* padding: 10px; */
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 1.2em;
+    }
+
+    .hero-text p {
+        font-size: 0.9em;
+    }
+
+    .hero-text button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+
+    .container h1 {
+        font-size: 1.5em;
+    }
+
+    .container p {
+        font-size: 0.9em;
+    }
+}
+
+
+/* guest form */
+
