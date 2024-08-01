@@ -92,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .form-container {
+            background-image: url('images/bo.jpg');
             display: flex;
             justify-content: space-evenly;
             max-width: 1500px;
@@ -101,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .form-container .container {
+            width: 100%;
             flex-basis: 60%;
             margin: 20px;
             padding: 20px;
@@ -125,18 +127,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .your-stay {
-            height: 500px;
+            max-height: 350px;
+            max-width: 400px;
             margin-top: 15%;
             flex-basis: 35%;
             margin: 20px;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
             background-color: #f8f1e4;
-            font-size: 1.3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
             text-align: left;
+            color: #333;
         }
+
+        .your-stay h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #444;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .your-stay p {
+            margin: 10px 0;
+            line-height: 1.5;
+            font-size: 1.1rem;
+        }
+
+        .your-stay p span {
+            font-weight: bold;
+        }
+
+        .your-stay p:nth-child(6) {
+            margin-top: 15px;
+            font-size: 1.3rem;
+            color: #444;
+        }
+
+        .your-stay p:nth-child(7) {
+            font-size: 1.3rem;
+            color: #555;
+            font-weight: bold;
+        }
+
         }
 
         /* guest details--form */
@@ -1501,12 +1535,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="form-header-group hasImage header-default" data-imagealign="Top">
                                 <!-- <div class="header-logo"><img src="https://www.jotform.com/uploads/ugurg/form_files/catchabreak.65b115fe8b8dc3.01177570.png" alt="" width="751" class="header-logo-top" /></div> -->
 
-                                
+
                                 <div class="header-text httac htvam">
                                     <h2 id="header_1" class="form-header" data-component="header" aria-hidden="true">
                                         Guest Details
-                                <p>Room Type: <?php echo $type; ?></p>
-                                <p>Price: ₹<?php echo $price; ?> per night</p>
+                                        <p>Room Type: <?php echo $type; ?></p>
+                                        <p>Price: ₹<?php echo $price; ?> per night</p>
                                     </h2>
                                 </div>
                             </div>
@@ -1665,7 +1699,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField">
                                 <button id="input_2" type="submit"
                                     class="form-submit-button submit-button jf-form-buttons jsTest-submitField"
-                                    data-component="button" data-content="" onclick="payment/paymentindex.html">Submit & Proceed to
+                                    data-component="button" data-content="" onclick="payment/paymentindex.html">Submit &
+                                    Proceed to
                                     Pay</button>
                             </div>
                         </div>
@@ -1733,19 +1768,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
             <div class="your-stay">
-
                 <h2>Your Stay</h2>
                 <p>Check-in<br>After 2:00 PM</p>
                 <p>Check-out<br>Before 12:00 PM</p>
-                <p><?php echo $row["checkin"]; ?> to <?php echo $row["checkout"]; ?><br><?php echo $row["guests"]; ?></p>
+                <p><?php echo $row["checkin"]; ?> to <?php echo $row["checkout"]; ?><br><?php echo $row["guests"]; ?> Guests
+                </p>
                 <p>Room Type: <?php echo $type; ?></p>
-                <p>Price: <?php echo $price; ?> per night</p>
+                <p>Price: ₹<?php echo $price; ?> per night</p>
                 <p>Taxes and Fees<br>28%</p>
-                <?php 
-                    $total = $price + (0.28*$price);
+                <?php
+                $total = $price + (0.28 * $price);
                 ?>
                 <p>Total: ₹<?php echo $total; ?><br>(INR tax included)</p>
             </div>
+
         </div>
         </div>
 

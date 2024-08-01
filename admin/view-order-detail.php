@@ -2,7 +2,7 @@
 session_start();
 error_reporting(E_ALL); // Enable error reporting
 ini_set('display_errors', 1); // Display errors
-include ('includes/dbconnection.php');
+include('includes/dbconnection.php');
 
 if (strlen($_SESSION['otssaid']) == 0) {
   header('location:logout.php');
@@ -11,16 +11,16 @@ if (strlen($_SESSION['otssaid']) == 0) {
     $vid = $_GET['viewid'];
     $status = $_POST['status'];
     $remark = $_POST['remark'];
-    $tc = $_POST['tc'];
+    $tcost = $_POST['cost'];
 
-    $sql = "UPDATE guests SET Status=:status, Remark=:remark, TotalCost=:tc WHERE booking_id=:vid";
+    $sql = "UPDATE guests SET Status=:status, Remark=:remark, TotalCost=:tcost WHERE booking_id=:vid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
     $query->bindParam(':remark', $remark, PDO::PARAM_STR);
-    $query->bindParam(':tc', $tc, PDO::PARAM_STR);
+    $query->bindParam(':tcost', $tcost, PDO::PARAM_STR);
     $query->bindParam(':vid', $vid, PDO::PARAM_STR);
 
-    if($query->execute()) {
+    if ($query->execute()) {
       echo '<script>alert("Remark has been updated")</script>';
       echo "<script>window.location.href ='all-order.php'</script>";
     } else {
@@ -28,6 +28,7 @@ if (strlen($_SESSION['otssaid']) == 0) {
     }
   }
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -73,7 +74,7 @@ if (strlen($_SESSION['otssaid']) == 0) {
                 <table id="zero_config" class="table table-striped table-bordered no-wrap">
                   <?php
                   $vid = $_GET['viewid'];
-                  $sql = "SELECT bookings.booking_id, DATEDIFF(bookings.checkout, bookings.checkin) as ddf, guests.name, guests.email, guests.mobile, guests.address1, bookings.checkin, bookings.checkout, guests.booking_id, guests.TotalCost, guests.Remark, guests.Status 
+                  $sql = "SELECT bookings.booking_id, DATEDIFF(bookings.checkout, bookings.checkin) as ddf, guests.name, guests.email, guests.mobile, guests.address1, bookings.checkin, bookings.checkout, guests.TotalCost, guests.Remark, guests.Status 
                           FROM guests 
                           JOIN bookings ON bookings.booking_id = guests.booking_id 
                           WHERE guests.booking_id = :vid";
@@ -112,19 +113,13 @@ if (strlen($_SESSION['otssaid']) == 0) {
                         <tr>
                           <th>Total Days</th>
                           <td><?php echo $ddf = $row->ddf; ?></td>
-                          <th>Stay Price</th>
-                          <td><?php echo $tp = $row->Cost; ?></td>
-                        </tr>
-                        <tr>
                           <th>Total Cost</th>
-                          <td><?php echo $tc = $ddf * $tp; ?></td>
+                          <td><?php echo $tc = $ddf * $row->TotalCost; ?></td>
                         </tr>
                         <tr>
-                          <th>Image</th>
-                          <td><img src="images/<?php echo $row->Image; ?>" width="200" height="150" value="<?php echo $row->Image; ?>"></td>
                           <th>Stay Final Status</th>
-                          <td style="color: blue"> 
-                            <?php 
+                          <td style="color: blue">
+                            <?php
                             if ($row->Status == "Confirmed") {
                               echo "Your Stay has been Confirmed";
                             } elseif ($row->Status == "Cancelled") {
@@ -164,15 +159,15 @@ if (strlen($_SESSION['otssaid']) == 0) {
                             <td><?php echo $row->TotalCost; ?></td>
                             <td><?php echo $row->Remark; ?></td>
                             <td class="font-w600">
-                              <?php 
+                              <?php
                               if ($row->Status == "") { ?>
-                                <span class="badge badge-warning"> <?php echo "Not Updated Yet"; ?></span>
+                                <span class="badge badge-warning"><?php echo "Not Updated Yet"; ?></span>
                               <?php } elseif ($row->Status == 'Cancelled') { ?>
-                                <span class="badge badge-danger"> <?php echo htmlentities($row->Status); ?></span>
+                                <span class="badge badge-danger"><?php echo htmlentities($row->Status); ?></span>
                               <?php } else { ?>
                                 <span class="badge badge-success"><?php echo htmlentities($row->Status); ?></span>
-                              <?php } ?>    
-                            </td> 
+                              <?php } ?>
+                            </td>
                             <td><?php echo $row->UpdationDate; ?></td>
                           </tr>
                           <?php $cnt = $cnt + 1;
@@ -185,90 +180,74 @@ if (strlen($_SESSION['otssaid']) == 0) {
                       <button class="btn btn-primary waves-effect waves-light w-lg" data-toggle="modal" data-target="#myModal">Take Action</button>
                     </p>
                   <?php } ?>
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="
-
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Take Action</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <table class="table table-bordered table-hover data-tables">
-
-                                <form method="post" name="submit">
-
-
-
-                                  <tr>
-                                    <th>Remark :</th>
-                                    <td>
-                                      <textarea name="remark" placeholder="Remark" rows="6" cols="14"
-                                        class="form-control wd-450" required="true"></textarea>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <th>Total Cost :</th>
-                                    <td>
-                                      <input name="tc" value="<?php echo $tc ?>" class="form-control wd-450"
-                                        required="true" readonly>
-                                    </td>
-                                  </tr>
-
-                                  <tr>
-                                    <th>Status :</th>
-                                    <td>
-
-                                      <select name="status" class="form-control wd-450" required="true">
-                                        <option value="Confirmed" selected="true">Confirmed</option>
-                                        <option value="Cancelled">cancelled</option>
-                                      </select>
-                                    </td>
-                                  </tr>
-                              </table>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="submit" name="submit" class="btn btn-primary">Update</button>
-
-                              </form>
-                            </div>
-                          </div>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Take Action</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table table-bordered table-hover data-tables">
+                            <form method="post" name="submit">
+                              <tr>
+                                <th>Remark :</th>
+                                <td>
+                                  <textarea name="remark" placeholder="Remark" rows="6" cols="14" class="form-control wd-450" required="true"></textarea>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th>Total Cost :</th>
+                                <td>
+                                  <input name="cost" value="<?php echo $tc ?>" class="form-control wd-450" required="true" readonly>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th>Status :</th>
+                                <td>
+                                  <select name="status" class="form-control wd-450" required="true">
+                                    <option value="Confirmed" selected="true">Confirmed</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                  </select>
+                                </td>
+                              </tr>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                          </form>
                         </div>
                       </div>
+                    </div>
                   </div>
-
                 </div>
-
-                <?php include_once ('includes/footer.php'); ?>
               </div>
-
+              <?php include_once('includes/footer.php'); ?>
             </div>
-
-            <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-            <!-- Bootstrap tether Core JavaScript -->
-            <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-            <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- apps -->
-            <!-- apps -->
-            <script src="dist/js/app-style-switcher.js"></script>
-            <script src="dist/js/feather.min.js"></script>
-            <!-- slimscrollbar scrollbar JavaScript -->
-            <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-            <script src="assets/extra-libs/sparkline/sparkline.js"></script>
-            <!--Wave Effects -->
-            <!-- themejs -->
-            <!--Menu sidebar -->
-            <script src="dist/js/sidebarmenu.js"></script>
-            <!--Custom JavaScript -->
-            <script src="dist/js/custom.min.js"></script>
-            <!--This page plugins -->
-            <script src="assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-            <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-  </body>
-
-  </html>
+          </div>
+          <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+          <!-- Bootstrap tether Core JavaScript -->
+          <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+          <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+          <!-- apps -->
+          <!-- apps -->
+          <script src="dist/js/app-style-switcher.js"></script>
+          <script src="dist/js/feather.min.js"></script>
+          <!-- slimscrollbar scrollbar JavaScript -->
+          <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+          <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+          <!--Wave Effects -->
+          <!-- themejs -->
+          <!--Menu sidebar -->
+          <script src="dist/js/sidebarmenu.js"></script>
+          <!--Custom JavaScript -->
+          <script src="dist/js/custom.min.js"></script>
+          <!--This page plugins -->
+          <script src="assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+          <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
+</body>
+</html>
 <?php } ?>

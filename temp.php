@@ -112,26 +112,90 @@
         </div> -->
        <!-- list_rooms.php -->
 <?php
-include 'includes/dbconnection.php';
+// include 'includes/dbconnection.php';
 
-$query = "SELECT * FROM rooms";
-$result = mysqli_query($conn, $query);
+// $query = "SELECT * FROM rooms";
+// $result = mysqli_query($conn, $query);
 
-while ($row = mysqli_fetch_assoc($result)) {
-    $id = $row['id'];
-    $type = $row['type'];
-    $price = $row['price'];
-    // Output room details
-    echo "
-    <div class='room-card'>
-        <h2>$type</h2>
-        <p>Price: $$price per night</p>
-        <form action='booking.php' method='post'>
-            <input type='hidden' name='id' value='$id'>
-            <input type='hidden' name='type' value='$type'>
-            <input type='hidden' name='price' value='$price'>
-            <button type='submit'>Select</button>
-        </form>
-    </div>";
-}
+// while ($row = mysqli_fetch_assoc($result)) {
+//     $id = $row['id'];
+//     $type = $row['type'];
+//     $price = $row['price'];
+//     // Output room details
+//     echo "
+//     <div class='room-card'>
+//         <h2>$type</h2>
+//         <p>Price: $$price per night</p>
+//         <form action='booking.php' method='post'>
+//             <input type='hidden' name='id' value='$id'>
+//             <input type='hidden' name='type' value='$type'>
+//             <input type='hidden' name='price' value='$price'>
+//             <button type='submit'>Select</button>
+//         </form>
+//     </div>";
+// }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold text-gray-800">Logo</div>
+                <div class="flex space-x-6">
+                    <div class="relative dropdown">
+                        <button class="text-gray-600 hover:text-gray-800 focus:outline-none">Destinations</button>
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-md rounded-md py-2 z-20 dropdown-menu hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Residential Suites</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Special Offers</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Experiences</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Luxury Gifting By Oberoi</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">COU COU by Oberoi</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Amadeo by Oberoi</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">The Oberoi Concours d'Elegance</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">The O&MO Alliance</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Best Rate Guarantee</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Gift Card</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Gallery</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Awards</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About Us</a>
+                        </div>
+                    </div>
+                    <!-- Add more nav items here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold">Dropdown Navbar Example</h1>
+    </div>
+
+    <script>
+        // Optional: Add JavaScript to handle the dropdown behavior on small screens
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+            dropdown.addEventListener('mouseenter', function () {
+                dropdownMenu.classList.remove('hidden');
+            });
+
+            dropdown.addEventListener('mouseleave', function () {
+                dropdownMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -49,7 +49,7 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-    <?php include_once ('../includes/header.php'); ?>
+    <!-- <?php include_once ('../includes/header.php'); ?> -->
     <!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
     <div class="min-h-screen bg-white-500 flex justify-center">
         <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -97,7 +97,7 @@ if (isset($_POST['login'])) {
             </div>
             <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
                 <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-                    style="background-image: url('../images/adminlogin.png');">
+                    style="background-image: url('../images/heromumbai.jpg');">
                 </div>
             </div>
         </div>
