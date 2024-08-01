@@ -28,7 +28,6 @@ if (strlen($_SESSION['otssaid']) == 0) {
     }
   }
 ?>
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
