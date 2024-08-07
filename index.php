@@ -29,7 +29,7 @@
             width: 1519px;
             height: 570px;
             background: linear-gradient(-90deg, rgba(0, 0, 0, .01) .51%, rgba(0, 0, 0, .3) 62.06%, rgba(0, 0, 0, .5) 99.78%);
-            /* padding-top: 150px; */
+            padding-top: 150px; 
 
         } */
     </style>

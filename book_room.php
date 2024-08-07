@@ -92,12 +92,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .form-container {
-            background-image: url('images/bo.jpg');
+            /* background-image: url('images/bo.jpg'); */
+
             display: flex;
             justify-content: space-evenly;
             max-width: 1500px;
             margin: 0 auto;
-            background-color: #f5f5f5;
+            color: #FAF9F6;
             /* padding-top: 10%; */
         }
 
@@ -1539,8 +1540,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="header-text httac htvam">
                                     <h2 id="header_1" class="form-header" data-component="header" aria-hidden="true">
                                         Guest Details
-                                        <p>Room Type: <?php echo $type; ?></p>
-                                        <p>Price: ₹<?php echo $price; ?> per night</p>
+                                        
+                                        <!-- <p>Room Type: <?php echo $type; ?></p>
+                                        <p>Price: ₹<?php echo $price; ?> per night</p> -->
                                     </h2>
                                 </div>
                             </div>
@@ -1781,6 +1783,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ?>
                 <p>Total: ₹<?php echo $total; ?><br>(INR tax included)</p>
             </div>
+            <?php 
+             
+             $query3 = "insert into guests(TotalCost) values('$total')";
+             $result = $conn->query($query3);
+            ?>
 
         </div>
         </div>
@@ -1810,7 +1817,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             });
         </script>
-        <script src="card.js"></script>
     </body>
 
     </html>
