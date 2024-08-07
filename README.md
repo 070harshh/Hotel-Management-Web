@@ -1,3 +1,5 @@
+![logo](https://github.com/user-attachments/assets/5f7293a2-67b4-4a36-adda-518bff545bce)
+
 Royal Orchid Hotel Booking System
 Project Overview
 Royal Orchid is a web-based booking system for hotels that allows users to check availability, make reservations, and receive confirmation emails. This project is designed to provide a seamless booking experience for users while showcasing various web development technologies.
