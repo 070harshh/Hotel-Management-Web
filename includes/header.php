@@ -25,8 +25,8 @@
         <!-- <div class="nav-controls"> -->
             <div class="flex space-x-6">
                 <div class="relative dropdown">
-                    <button a class="text-white-600 hover:text-white-800 focus:outline-none">Other services</button a><h1>|</h1>
-                    <div class="absolute left-0 mt-2 w-64 bg-white shadow-md rounded-md py-2 z-20 dropdown-menu hidden">
+                    <button class="text-white-600 hover:text-white-800 focus:outline-none">Other services</button>
+                    <div class="absolute left-0 mt-2 w-64 bg-gray-600 shadow-md rounded-md py-2 z-20 dropdown-menu hidden">
                         <a href="#" class="block px-4 py-2 text-sm text-white-700 hover:bg-gray-100">Residential
                             Suites</a>
                         <a href="#" class="block px-4 py-2 text-sm text-white-700 hover:bg-gray-100">Special Offers</a>

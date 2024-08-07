@@ -3,7 +3,7 @@ $servername   = "localhost:3306";
 $username = "root";
 $password = "";
 $database="hoteldb";
-// Establish database connection.
+
 
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -12,3 +12,4 @@ $conn = new mysqli($servername, $username, $password, $database);
 //  }
 //    echo "Connected successfully";
 ?>
+<!--  -->

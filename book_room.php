@@ -1,6 +1,32 @@
 <?php
 include 'includes/dbconnection.php';
 
+
+session_start();
+include('includes/dbconnection.php');
+
+function checkRoomAvailability($checkin, $checkout) {
+    global $dbh;
+    $sql = "SELECT * FROM rooms WHERE id NOT IN (
+                SELECT booking_id FROM bookings 
+                WHERE 
+                    (:checkin < checkout AND :checkout > checkin)
+            )";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':checkin', $checkin, PDO::PARAM_STR);
+    $query->bindParam(':checkout', $checkout, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    return $results;
+}
+
+if (isset($_POST['check_availability'])) {
+    $checkin = $_POST['checkin'];
+    $checkout = $_POST['checkout'];
+    $availableRooms = checkRoomAvailability($checkin, $checkout);
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'];
     $type = $_POST['type'];
@@ -1785,8 +1811,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <?php 
              
-             $query3 = "insert into guests(TotalCost) values('$total')";
-             $result = $conn->query($query3);
+            //  $query3 = "insert into guests(TotalCost) values('$total')";
+            //  $result = $conn->query($query3);
             ?>
 
         </div>
@@ -1807,6 +1833,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script>
+
+        </script>
         <script>
             window.addEventListener('scroll', function () {
                 const navbar = document.getElementById('navbar');

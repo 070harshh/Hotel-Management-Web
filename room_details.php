@@ -2,6 +2,31 @@
 include 'includes/dbconnection.php';
 
 
+session_start();
+include('includes/dbconnroom.php');
+
+// Function to check room availability
+function checkRoomAvailability($checkin, $checkout) {
+    global $dbh;
+    $sql = "SELECT * FROM rooms WHERE id NOT IN (
+                SELECT booking_id FROM bookings 
+                WHERE 
+                    (:checkin < checkout AND :checkout > checkin)
+            )";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':checkin', $checkin, PDO::PARAM_STR);
+    $query->bindParam(':checkout', $checkout, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    return $results;
+}
+
+if (isset($_POST['check_availability'])) {
+    $checkin = $_POST['checkin'];
+    $checkout = $_POST['checkout'];
+    $availableRooms = checkRoomAvailability($checkin, $checkout);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $guests = $_POST['guests'];
     $checkin = $_POST['checkin'];
@@ -12,8 +37,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <?php
 // Start the session
-session_start();
+// session_start();
 ?>
+ <?php
+    if (isset($availableRooms)) {
+        if (count($availableRooms) > 0) {
+            echo "<h3>Available Rooms:</h3>";
+            echo "<ul>";
+            foreach ($availableRooms as $room) {
+                echo "<li>(Type: " . htmlentities($room->type) . ")</li>";
+                // Room Number: " . htmlentities($room->RoomNumber) . " 
+            }
+            echo "</ul>";
+        } else {
+            echo "<p>No rooms available for the selected dates.</p>";
+        }
+    }
+    ?>
 <?php
 include 'includes/dbconnection.php';
 
