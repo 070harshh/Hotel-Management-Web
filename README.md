@@ -33,7 +33,7 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/royal-orchid.git
+git clone https://github.com/070harshh/royal-orchid.git
 Navigate to the Project Directory:
 
 bash
